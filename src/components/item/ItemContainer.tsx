@@ -11,7 +11,7 @@ const ItemContainer = () => {
   useEffect(()=>{ 
     //const data = client.get('/?url=https://velog.io/@kimbangul');
     //console.log(data);
-    console.log(router);
+    console.log(router.query);
   }, []);
   
   return(
