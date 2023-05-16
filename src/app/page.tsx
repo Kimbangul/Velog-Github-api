@@ -1,8 +1,11 @@
+import ItemContainer from "@/components/item/ItemContainer"
 
 export default function Home() {
   return (
     <section>
-      index
+      <ul>
+      <ItemContainer />
+      </ul>
     </section>
   )
 }
