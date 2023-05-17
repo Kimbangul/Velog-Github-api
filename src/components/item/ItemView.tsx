@@ -1,7 +1,5 @@
 'use client';
 
-import { useRouter } from 'next/router';
-import Image from 'next/image';
 import Link from 'next/link';
 import Item from '@/components/item/ItemStyle';
 import { ItemViewPropsType, CrawlerResponseType } from '@/components/item/ItemType';
@@ -22,7 +20,6 @@ const ItemView : React.FC<ItemViewPropsType> = ({postList}) => {
 }
 
 const PostItem : React.FC<CrawlerResponseType> = ({head, headline, date,context,href,tags}) => {
-  // const router = useRouter();
   const BASE_URL = process.env.NEXT_PUBLIC_POST_BASE_URL;
   
   return(
