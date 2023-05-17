@@ -12,12 +12,20 @@ const ItemContainer = () => {
   const params2 = useParams();
   const pathName = usePathname();
   console.log(process.env.NEXT_PUBLIC_API_URL);
-  useEffect(()=>{ 
+
+  // FUNCTION get cralwer data
+  const getCralwerData = async () => {
     const id = params.get('id');
     console.log(id);
-    const data = client.get(`/?id=${id}`);
+
+    const data =  await client.get(`/?id=${id}`);
 
     console.log(data);
+    return data;
+  }
+
+  useEffect(()=>{ 
+    getCralwerData();
   }, []);
   
   return(
