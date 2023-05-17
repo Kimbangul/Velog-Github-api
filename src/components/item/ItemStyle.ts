@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Item = {
-  Container: styled.li`
+  Container: styled.ul`
   `,
 }
 

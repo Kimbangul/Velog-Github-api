@@ -4,7 +4,11 @@ interface CrawlerResponseType{
   context: string,
   href: string,
   headline: string,
-  tags: string
+  tags: string[]
 }
 
-export type {CrawlerResponseType}
+interface ItemViewPropsType {
+  postList: CrawlerResponseType[];
+}
+
+export type {CrawlerResponseType, ItemViewPropsType}
