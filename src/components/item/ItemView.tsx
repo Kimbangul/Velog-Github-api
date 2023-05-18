@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import Item from '@/components/item/ItemStyle';
 import { ItemViewPropsType, CrawlerResponseType } from '@/components/item/ItemType';
@@ -25,12 +26,12 @@ const PostItem : React.FC<CrawlerResponseType> = ({head, headline, date,context,
   return(
     <li>
       <Link href={`${BASE_URL}${href}`} target='_blank'>
-        {/* {
+        {
           head &&
           <div>
             <Image src={head} alt='' width={768} height={402}/>
           </div>
-        } */}
+        }
         <h2>{headline}</h2>
         <p>{context}</p>
         <span>{date}</span>
