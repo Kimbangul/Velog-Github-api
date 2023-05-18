@@ -17,6 +17,7 @@ export const PostItem = {
     }
     & > a{
       padding: 2.4rem;
+      height: 17.9rem;
       display: flex;
       gap: 1.6rem;
     }
@@ -26,19 +27,20 @@ export const PostItem = {
       
       & img{
         object-fit: cover;
+        height: 100% !important;
       }
     `,
   },
   Text: {
     Container: styled.div`
-      
+      color: #222;
     `,
     Title: styled.h2`
       font-size: 1.4rem;
       font-weight: 600;
       display: -webkit-box;
       -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
+      -webkit-line-clamp: 1;
       overflow: hidden;
     `,
     Desc: styled.p`
@@ -49,12 +51,14 @@ export const PostItem = {
       overflow: hidden;
       margin-top: 1.2rem;
       line-height: 1.5;
+      color:#444;
     `,
     Date: styled.span`
       font-size: 1.1rem;
       display: block;
       text-align: end;
       margin-top: 0.8rem;
+      color: #666;
     `,
   },
   Tag:{
@@ -64,7 +68,7 @@ export const PostItem = {
       margin-top: 1.4rem;
     `,
     Item: styled.li`
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       padding: 0.4rem 0.6rem;
       border-radius: 10rem;
       background: #F8F9FA;

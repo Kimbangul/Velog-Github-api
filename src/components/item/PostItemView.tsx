@@ -25,6 +25,7 @@ const PostItemView : React.FC<CrawlerResponseType> = ({head, headline, date,cont
           <PostItem.Tag.List>
             {
               tags.map((el, idx) => {
+                if (idx > 2) return;
                 return(
                   <PostItem.Tag.Item key={`${el}${idx}`}>{el}</PostItem.Tag.Item>
                 )
