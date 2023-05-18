@@ -1,6 +1,6 @@
 'use client';
 
-import Item from '@/components/item/ItemStyle';
+import {Item} from '@/components/item/ItemStyle';
 import { ItemViewPropsType} from '@/components/item/ItemType';
 import PostItemView from '@/components/item/PostItemView';
 

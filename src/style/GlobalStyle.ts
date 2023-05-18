@@ -36,7 +36,6 @@ const GlobalStyle = createGlobalStyle`
   body{
     font-family: 'Poppins', 'Pretendard', 'sans-serif';
     font-size: ${theme.fontSize.body.sm};
-    background-color: ${theme.color.main};
     min-width: 280px;
     
   }

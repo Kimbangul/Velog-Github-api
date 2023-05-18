@@ -3,36 +3,39 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { CrawlerResponseType } from '@/components/item/ItemType';
+import { PostItem } from '@/components/item/ItemStyle';
 
 const PostItemView : React.FC<CrawlerResponseType> = ({head, headline, date,context,href,tags}) => {
   const BASE_URL = process.env.NEXT_PUBLIC_POST_BASE_URL;
   
   return(
-    <li>
+    <PostItem.Item>
       <Link href={`${BASE_URL}${href}`} target='_blank'>
         {
           head &&
-          <div>
-            <Image src={head} alt='' width={768} height={402}/>
-          </div>
+          <PostItem.Image.Container>
+            <Image src={head} alt='' width={180} height={120}/>
+          </PostItem.Image.Container>
         }
-        <h2>{headline}</h2>
-        <p>{context}</p>
-        <span>{date}</span>
+       <PostItem.Text.Container>
+       <PostItem.Text.Title>{headline}</PostItem.Text.Title>
+        <PostItem.Text.Desc>{context}</PostItem.Text.Desc>
         {
           tags.length > 0 &&
-          <ul>
+          <PostItem.Tag.List>
             {
               tags.map((el, idx) => {
                 return(
-                  <li key={`${el}${idx}`}>{el}</li>
+                  <PostItem.Tag.Item key={`${el}${idx}`}>{el}</PostItem.Tag.Item>
                 )
               })
             }
-          </ul>
+          </PostItem.Tag.List>
         }
+        <PostItem.Text.Date>{date}</PostItem.Text.Date>
+       </PostItem.Text.Container>
       </Link>
-    </li>
+    </PostItem.Item>
   )
 }
 
