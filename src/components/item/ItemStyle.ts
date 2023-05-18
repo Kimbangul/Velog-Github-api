@@ -39,6 +39,7 @@ export const PostItem = {
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
+      overflow: hidden;
     `,
     Desc: styled.p`
       font-size: 1.2rem;
