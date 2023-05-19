@@ -11,6 +11,7 @@ const ItemContainer = () => {
 
   // PARAM state
   const [postList, setPostList] = useState([]);
+  const [imgData, setImgData] = useState('');
   const [limit, setLimit] = useState(0);
   const [thumb, setThumb] = useState(false);
 
@@ -26,20 +27,16 @@ const ItemContainer = () => {
   }
 
   // FUNCTION html to image
-  const getImgData = () => {
-    let imgData : string = '';
+  const getImgData = async () => {
+    let imgData;
 		const view = document.getElementById('view');
-    if (!(view instanceof HTMLUListElement)) return '';
+    if (!(view instanceof HTMLUListElement)) return;
 
-		html2canvas(view).then(canvas=>{
-			imgData = canvas.toDataURL('image/png');
-      console.log(view);
-      console.log(imgData);
-      alert(imgData);
-      return imgData;
+		return html2canvas(view).then(async canvas=>{
+			imgData = await canvas.toDataURL('image/png');
+      setImgData(imgData);
 		}).catch((e)=>{
       console.log(e);
-      return '';
     })
 	};
 
@@ -64,8 +61,14 @@ const ItemContainer = () => {
 
   useEffect(()=>{
     if (postList.length === 0) return;
-    const imgData = getImgData();
-  }, [postList])
+    getImgData();
+  }, [postList]);
+
+  useEffect(()=>{
+    if (imgData === '') return;
+    console.log(imgData);
+    window.open(imgData, '_blank');
+  }, [imgData])
   
   return(
     <>
