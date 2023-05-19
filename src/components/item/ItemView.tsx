@@ -6,7 +6,7 @@ import PostItemView from '@/components/item/PostItemView';
 
 const ItemView : React.FC<ItemViewPropsType> = ({postList, limit, thumb}) => {
   return(
-    <Item.Container>
+    <Item.Container id="view">
      {
       postList.map((el, idx) => {
         if (el.href === undefined) return;

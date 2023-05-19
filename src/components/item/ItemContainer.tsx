@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import {useSearchParams } from "next/navigation";
+import html2canvas from "html2canvas";
 import client from "@/axios/client";
 import ItemView from "@/components/item/ItemView";
 
@@ -24,6 +25,24 @@ const ItemContainer = () => {
     return;
   }
 
+  // FUNCTION html to image
+  const getImgData = () => {
+    let imgData : string = '';
+		const view = document.getElementById('view');
+    if (!(view instanceof HTMLUListElement)) return '';
+
+		html2canvas(view).then(canvas=>{
+			imgData = canvas.toDataURL('image/png');
+      console.log(view);
+      console.log(imgData);
+      alert(imgData);
+      return imgData;
+		}).catch((e)=>{
+      console.log(e);
+      return '';
+    })
+	};
+
   useEffect(()=>{ 
     const limitParam = params.get('limit');
     const thumbParam = params.get('thumb');
@@ -42,6 +61,11 @@ const ItemContainer = () => {
       setThumb(thumb);
     }
   }, []);
+
+  useEffect(()=>{
+    if (postList.length === 0) return;
+    const imgData = getImgData();
+  }, [postList])
   
   return(
     <>
