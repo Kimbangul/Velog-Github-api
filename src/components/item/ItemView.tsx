@@ -4,14 +4,15 @@ import {Item} from '@/components/item/ItemStyle';
 import { ItemViewPropsType} from '@/components/item/ItemType';
 import PostItemView from '@/components/item/PostItemView';
 
-const ItemView : React.FC<ItemViewPropsType> = ({postList}) => {
+const ItemView : React.FC<ItemViewPropsType> = ({postList, limit, thumb}) => {
   return(
     <Item.Container>
      {
       postList.map((el, idx) => {
         if (el.href === undefined) return;
+        if (limit !== 0  && limit < idx) return;
         return(
-          <PostItemView {...el} key={`post${idx}`}/>
+          <PostItemView {...el} limit={limit} thumb={thumb} key={`post${idx}`}/>
         )
       })
      }

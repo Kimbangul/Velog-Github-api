@@ -34,6 +34,7 @@ export const PostItem = {
   Text: {
     Container: styled.div`
       color: #222;
+      flex-grow: 1;
     `,
     Title: styled.h2`
       font-size: 1.4rem;

@@ -5,14 +5,14 @@ import Link from 'next/link';
 import { CrawlerResponseType } from '@/components/item/ItemType';
 import { PostItem } from '@/components/item/ItemStyle';
 
-const PostItemView : React.FC<CrawlerResponseType> = ({head, headline, date,context,href,tags}) => {
+const PostItemView : React.FC<CrawlerResponseType> = ({head, headline, date,context,href,tags, limit, thumb}) => {
   const BASE_URL = process.env.NEXT_PUBLIC_POST_BASE_URL;
   
   return(
     <PostItem.Item>
       <Link href={`${BASE_URL}${href}`} target='_blank'>
         {
-          head &&
+          head && thumb &&
           <PostItem.Image.Container>
             <Image src={head} alt='' width={180} height={120}/>
           </PostItem.Image.Container>

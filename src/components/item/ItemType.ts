@@ -1,4 +1,8 @@
-interface CrawlerResponseType{
+interface OptionType{
+  limit: number;
+  thumb: boolean;
+}
+interface CrawlerResponseType extends OptionType{
   head: string,
   date: string,
   context: string,
@@ -7,7 +11,7 @@ interface CrawlerResponseType{
   tags: string[]
 }
 
-interface ItemViewPropsType {
+interface ItemViewPropsType extends OptionType {
   postList: CrawlerResponseType[];
 }
 
