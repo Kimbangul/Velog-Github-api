@@ -1,13 +1,15 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {useSearchParams } from "next/navigation";
 import html2canvas from "html2canvas";
+import { toSvg } from 'html-to-image';
 import client from "@/axios/client";
 import ItemView from "@/components/item/ItemView";
 
 const ItemContainer = () => {
   const params = useSearchParams();
+  const viewRef = useRef(null);
 
   // PARAM state
   const [postList, setPostList] = useState([]);
@@ -21,9 +23,6 @@ const ItemContainer = () => {
 
     const data = await client.get(`/?id=${id}`);
     setPostList(JSON.parse(data.data));
-
-
-    return;
   }
 
   // FUNCTION html to image
@@ -39,6 +38,20 @@ const ItemContainer = () => {
       console.log(e);
     })
 	};
+
+  // FUNCTION html to image
+  const getImg = () => {
+    if (!(viewRef?.current)) return;
+
+    toSvg(viewRef.current).then((dataUrl)=>{
+      const img = new Image();
+      img.src = dataUrl;
+      console.log(dataUrl);
+    }).catch((e)=>{
+      console.log(e);
+    });
+    console.log('end');
+  }
 
   useEffect(()=>{ 
     const limitParam = params.get('limit');
@@ -61,7 +74,8 @@ const ItemContainer = () => {
 
   useEffect(()=>{
     if (postList.length === 0) return;
-    getImgData();
+   // getImgData();
+    getImg();
   }, [postList]);
 
   useEffect(()=>{
@@ -72,7 +86,7 @@ const ItemContainer = () => {
   
   return(
     <>
-      <ItemView postList={postList} limit={limit} thumb={thumb}/>
+      <ItemView postList={postList} limit={limit} thumb={thumb} viewRef={viewRef}/>
     </>
   )
 }

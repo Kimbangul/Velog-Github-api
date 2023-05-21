@@ -1,6 +1,9 @@
+import { MutableRefObject } from "react";
+
 interface OptionType{
   limit: number;
   thumb: boolean;
+  viewRef: MutableRefObject<HTMLUListElement | null>;
 }
 interface CrawlerResponseType extends OptionType{
   head: string,
