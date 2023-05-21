@@ -24,9 +24,12 @@ export const PostItem = {
   `,
   Image: {
     Container: styled.div`
-      
+      width: 18rem;
+      position: relative;
+      flex-shrink: 0;
       & img{
         object-fit: cover;
+        object-position: center;
         height: 100% !important;
       }
     `,

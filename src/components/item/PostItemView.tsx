@@ -14,7 +14,7 @@ const PostItemView : React.FC<CrawlerResponseType> = ({head, headline, date,cont
         {
           head && thumb &&
           <PostItem.Image.Container>
-            <Image src={head} alt='' width={180} height={120}/>
+            <Image src={head} alt='' fill sizes='180px' priority/>
           </PostItem.Image.Container>
         }
        <PostItem.Text.Container>
