@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from "react";
-import {useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { toSvg } from 'html-to-image';
 import client from "@/axios/client";
 import ItemView from "@/components/item/ItemView";
@@ -31,12 +31,10 @@ const ItemContainer = () => {
     toSvg(viewRef.current).then((dataUrl)=>{
       const img = new Image();
       img.src = dataUrl;
-      console.log('data');
       setImgData(dataUrl);
     }).catch((e)=>{
       console.log(e);
     });
-    console.log('end');
   }
 
   useEffect(()=>{ 
@@ -58,6 +56,7 @@ const ItemContainer = () => {
     }
   }, []);
 
+  // FUNCTION HTML 이미지로 변경
   useEffect(()=>{
     if (postList.length === 0) return;
     getImg();
